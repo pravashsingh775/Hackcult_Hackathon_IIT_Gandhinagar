@@ -30,12 +30,12 @@ class DecisionService:
         """
         Executes Central Selective Deterrence Policy:
         
-        1. IF ANY supported animal is detected >= confidence_threshold:
+        1. IF ANY human ('person') is detected >= confidence_threshold:
+           - HUMAN DETECTED — NO DETERRENCE (no audio, no arm movement).
+        2. ELSE IF ANY supported animal is detected >= confidence_threshold:
            - Check Cooldown timer.
            - IF cooldown expired -> Trigger Deterrence (audio + arm movement).
            - IF cooldown active -> Suppress trigger, report COOLDOWN_ACTIVE.
-        2. ELSE IF ANY human ('person') is detected:
-           - HUMAN DETECTED — NO DETERRENCE (no audio, no arm movement).
         3. ELSE IF other objects or empty:
            - NO SUPPORTED ANIMAL DETECTED.
         """
@@ -58,6 +58,20 @@ class DecisionService:
             d for d in detections 
             if d.is_human and d.confidence >= settings.confidence_threshold
         ]
+
+        # Human presence takes priority, including frames with mixed detections.
+        if human_detections:
+            top_human = human_detections[0]
+            return DecisionResult(
+                status_code="HUMAN_NO_REACTION",
+                status_message=f"HUMAN DETECTED — NO DETERRENCE: {top_human.confidence:.0%} confidence. Safe farmer/worker presence.",
+                should_deter=False,
+                trigger_animal=None,
+                trigger_confidence=None,
+                human_present=True,
+                cooldown_remaining=round(cooldown_remaining, 1),
+                action_taken="Monitored peacefully — No sound, no arm actuation"
+            )
 
         # Case 1: Supported Animal Detected
         if animal_detections:
@@ -96,20 +110,6 @@ class DecisionService:
                 action_taken=action
             )
 
-        # Case 2: Human Detected (Strict safety policy)
-        if human_detections:
-            top_human = human_detections[0]
-            return DecisionResult(
-                status_code="HUMAN_NO_REACTION",
-                status_message=f"HUMAN DETECTED — NO DETERRENCE: {top_human.confidence:.0%} confidence. Safe farmer/worker presence.",
-                should_deter=False,
-                trigger_animal=None,
-                trigger_confidence=None,
-                human_present=True,
-                cooldown_remaining=round(cooldown_remaining, 1),
-                action_taken="Monitored peacefully — No sound, no arm actuation"
-            )
-
         # Case 3: No supported animal detected
         other_labels = [d.class_name for d in detections[:3]]
         summary = f"Detected: {', '.join(other_labels)}" if other_labels else "Field clear"
@@ -128,4 +128,3 @@ class DecisionService:
     def reset_cooldown(self):
         """Manually reset the cooldown timer."""
         self._last_deterrent_trigger_time = 0.0
-

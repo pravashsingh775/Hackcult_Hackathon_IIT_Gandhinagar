@@ -6,11 +6,11 @@ Smart Bijuka explores a selective, non-lethal response to crop-raiding animals. 
 
 - YOLOv8 object detection with class names, confidence values, and bounding boxes.
 - A configurable list of animal labels and a confidence threshold.
-- A response policy that returns no deterrence for a person-only detection.
+- A response policy that prioritizes confident human detections over animals, including mixed scenes.
 - Simulation by default, with opt-in actuator dispatch paths in the backend.
 - Local annotated snapshots and CSV event records.
 
-**Mixed detections:** the current decision code checks for a supported animal before it checks for a person. Therefore, a frame containing both a person and a supported animal can authorize deterrence. The current person-only test does not prove a blanket human-presence interlock. This behavior must be explicitly tested and resolved before claiming that any human presence always suppresses actuation.
+The acceptance tests cover mixed human/animal detections in either list order and the explicit still-image simulation path. These policy tests validate software decisions, not the accuracy or recall of the underlying vision model or the physical reliability of the actuator.
 
 ## Design goals, not validated results
 

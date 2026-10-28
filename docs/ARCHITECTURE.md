@@ -56,7 +56,7 @@ The dotted connections are intended/configurable paths, not evidence that the fu
 1. `/api/detect/image` receives one image, or the webcam endpoints provide a current frame.
 2. `DetectionService` calls YOLOv8 and returns class labels, confidence values, bounding boxes, and whether a class is a configured animal or a person.
 3. `DecisionService` allows only configured animal labels above the configured confidence threshold. It applies a cooldown and does not automatically actuate for a still image.
-4. A person-only detection returns `HUMAN_NO_REACTION`. The current policy checks supported animals first; a mixed person-and-animal frame can authorize deterrence. This is not a blanket human-presence interlock.
+4. Any person detection above the configured confidence threshold takes priority over animal detections and returns `HUMAN_NO_REACTION`. This includes mixed person-and-animal frames, regardless of detection ordering, and image mode with forced simulation.
 5. If authorized, the response service plays the selected audio and updates the actuator state. The default is simulation; an explicitly enabled REST/serial path may dispatch a physical command.
 6. The backend saves annotated snapshots in `software/backend/static/uploads/`. Selected animal/human events are appended to `software/logs/events.csv`.
 

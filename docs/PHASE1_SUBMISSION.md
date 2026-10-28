@@ -19,7 +19,7 @@ Use the running system and fresh, non-sensitive inputs. Do not use a scripted sc
 1. Show the hardware prototype and identify which components are assembled versus still being integrated.
 2. Start the FastAPI backend and show `/api/status` and the interactive `/docs`.
 3. Submit an actual animal image to `/api/detect/image`; show the class, confidence, annotated output, and decision.
-4. Submit a person-only image and show that the policy returns no deterrence. Explain that mixed person-and-animal scenes currently prioritize the animal branch and must be tested before describing human presence as a universal interlock.
+4. Submit a person-only image and a mixed person-and-animal image; show that confident human presence suppresses deterrence in both cases.
 5. Show a low-confidence or unsupported class and the cooldown behavior, if the test data demonstrates them.
 6. Show the event record and the CSV persistence. Explain that this is local storage, not a cloud database.
 7. Show that actuator mode is simulation by default. Only demonstrate physical actuation if the wiring and safety checks have been completed.
