@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+ENV/
+env/
+
+# AI model weights (auto-downloaded by Ultralytics on first run)
+*.pt
+*.onnx
+*.engine
+
+# Runtime Detection Snapshots and Logs
+software/detections/*
+!software/detections/.gitkeep
+software/logs/*
+!software/logs/.gitkeep
+software/backend/static/uploads/*
+!software/backend/static/uploads/.gitkeep
+*.log
+
+# Node & Frontend dependencies
+node_modules/
+.npm/
+.astro/
+dist/
+.tmp/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# IDEs & System Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini

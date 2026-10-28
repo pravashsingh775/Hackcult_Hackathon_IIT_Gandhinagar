@@ -1,0 +1,8 @@
+# Smart Bijuka — AI monitoring dashboard dependencies
+# Python 3.10+ required.
+
+ultralytics>=8.2.0        # YOLOv8 detection engine
+opencv-python>=4.9.0      # camera capture + drawing
+numpy>=1.24.0
+Pillow>=10.0.0            # Tkinter image display
+pygame>=2.5.0             # audio alert playback

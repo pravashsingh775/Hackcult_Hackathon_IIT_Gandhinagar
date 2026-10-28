@@ -1,0 +1,245 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import { HERO_IMAGE_URL, SNAPSHOT_URLS } from '../lib/data/mock';
+---
+
+<Layout title="The Scarecrow That Thinks — Smart Bijuka">
+  <Header />
+
+  <!-- Hero -->
+  <section id="hero" class="relative overflow-hidden bg-sidebar text-sidebar-foreground">
+    <img src={HERO_IMAGE_URL} alt="Smart Bijuka field guardian mounted on a pole in a green crop field" class="absolute inset-0 h-full w-full object-cover opacity-25" />
+    <div class="absolute inset-0 bg-gradient-to-r from-sidebar via-sidebar/90 to-sidebar/60"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
+      <p class="inline-flex items-center gap-2 rounded-full border border-sidebar-border bg-sidebar-accent/60 px-3 py-1 text-xs font-medium">
+        <span class="relative flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sidebar-primary opacity-60"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-sidebar-primary"></span>
+        </span>
+        Now protecting 5.1 acres in Nashik, Maharashtra
+      </p>
+      <h1 class="mt-6 max-w-3xl text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+        The Scarecrow<br />That Thinks.
+      </h1>
+      <p class="mt-5 max-w-2xl text-base sm:text-lg leading-relaxed opacity-85">
+        For generations, a Bijuka stood in the field — silent, still, and easily ignored.
+        Smart Bijuka keeps the tradition alive and gives it senses: it detects movement,
+        sees who came, decides what it is, and responds with the right sound until the
+        intruder leaves. All on solar power. All through the night.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/index" class="inline-flex items-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+          Open the live dashboard
+        </a>
+        <a href="/story#how-it-works" class="inline-flex items-center rounded-md border border-sidebar-border bg-sidebar-accent/50 px-5 py-2.5 text-sm font-semibold hover:bg-sidebar-accent transition-colors">
+          See how it works
+        </a>
+      </div>
+      <dl class="mt-12 grid max-w-2xl grid-cols-2 sm:grid-cols-4 gap-6">
+        <div>
+          <dt class="text-xs uppercase tracking-wide opacity-60">Detection → response</dt>
+          <dd class="mt-1 text-2xl font-semibold">~6 s</dd>
+        </div>
+        <div>
+          <dt class="text-xs uppercase tracking-wide opacity-60">Deterrence success</dt>
+          <dd class="mt-1 text-2xl font-semibold">84%</dd>
+        </div>
+        <div>
+          <dt class="text-xs uppercase tracking-wide opacity-60">Servo sweep</dt>
+          <dd class="mt-1 text-2xl font-semibold">180°</dd>
+        </div>
+        <div>
+          <dt class="text-xs uppercase tracking-wide opacity-60">Power</dt>
+          <dd class="mt-1 text-2xl font-semibold">100% solar</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section id="the-story" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+    <div class="grid gap-10 lg:grid-cols-2 items-center">
+      <div>
+        <p class="text-sm font-semibold text-primary uppercase tracking-wide">The story</p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-semibold">A farmer's problem, solved with AI at the edge</h2>
+        <div class="mt-5 space-y-4 text-sm sm:text-base leading-relaxed text-muted-foreground">
+          <p>
+            Wild boars at midnight. Stray cattle at dawn. Birds before harvest. Crop
+            raiding costs Indian farmers up to a quarter of their yield — and guarding
+            the field every night is not a life anyone should have to live.
+          </p>
+          <p>
+            Smart Bijuka is an intelligent field guardian, born as an engineering project
+            and built to be a real AgriTech product. A PIR sensor watches for motion and
+            wakes an ESP32-CAM. A YOLOv8 vision model — running at the edge — classifies
+            the visitor as human or animal, and down to the species. The Bijuka then
+            plays an animal-specific deterrent sound, adapts the intensity if the
+            intruder lingers, and sweeps its 180° servo so the sound moves — just like a
+            human scarecrow would.
+          </p>
+          <p>
+            Every event is logged with a capture frame, confidence score, zone, response
+            and outcome. Over time, the dashboard turns those logs into patterns: when
+            the boars come, which fence gap they use, which sounds actually work.
+          </p>
+        </div>
+        <a href="/index" class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
+          Explore the farmer dashboard →
+        </a>
+      </div>
+      <div class="relative">
+        <img src={HERO_IMAGE_URL} alt="Smart Bijuka device in the field at golden hour" class="w-full rounded-xl shadow-lg" width="1200" height="896" />
+        <div class="absolute -bottom-5 -left-5 hidden sm:block w-56 rounded-lg border border-border bg-card p-3 shadow-lg">
+          <img src={SNAPSHOT_URLS.night} alt="Night capture frame showing a wild boar detected at the field edge" class="rounded object-cover w-full" width="224" height="126" />
+          <p class="mt-2 text-xs font-medium">02:41 · Wild boar · 94%</p>
+          <p class="text-[11px] text-muted-foreground">Boar distress call L4 — deterred in 46 s</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how-it-works" class="border-y border-border bg-muted/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+      <div class="max-w-2xl">
+        <p class="text-sm font-semibold text-primary uppercase tracking-wide">How it works</p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-semibold">From motion to deterrence in about six seconds</h2>
+      </div>
+      <ol class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        {[
+          { n: "01", t: "PIR detects motion", d: "A low-power PIR sensor watches the field edge. Any warm-bodied movement wakes the system in under two seconds." },
+          { n: "02", t: "ESP32-CAM captures", d: "The camera wakes from deep sleep and grabs a frame — day or night, with automatic IR illumination." },
+          { n: "03", t: "YOLOv8 classifies", d: "An on-device vision model decides: human, wild boar, stray cattle, deer, birds — with a confidence score attached to every detection." },
+          { n: "04", t: "Adaptive deterrence", d: "The right sound plays through the 180° servo-swept speaker. If the intruder stays, intensity escalates automatically." },
+          { n: "05", t: "Log, alert, learn", d: "The event, frame and outcome are logged and pushed to your dashboard — building the patterns that power AI Insights." },
+        ].map((s) => (
+          <li class="rounded-xl border border-border bg-card p-5 shadow-sm">
+            <span class="text-xs font-bold text-primary">{s.n}</span>
+            <h3 class="mt-2 text-sm font-semibold">{s.t}</h3>
+            <p class="mt-1.5 text-xs leading-relaxed text-muted-foreground">{s.d}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="mt-8 rounded-xl border border-border bg-card p-5 sm:p-6 shadow-sm">
+        <h3 class="text-sm font-semibold">Human-like scarecrow behaviour</h3>
+        <p class="mt-1.5 max-w-3xl text-xs sm:text-sm leading-relaxed text-muted-foreground">
+          Animals learn to ignore anything predictable. In scarecrow mode, the Bijuka
+          moves its head at random intervals, rotates deterrent sounds, and raises the
+          volume only when needed — behaviour designed to keep intruders unsettled
+          without disturbing neighbours or wildlife unnecessarily.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hardware -->
+  <section id="hardware" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+    <div class="max-w-2xl">
+      <p class="text-sm font-semibold text-primary uppercase tracking-wide">Hardware</p>
+      <h2 class="mt-2 text-3xl sm:text-4xl font-semibold">Built for real fields, real weather, real nights</h2>
+    </div>
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {[
+        { t: "ESP32-CAM", d: "Low-power camera module with PIR-triggered wake, 800×600 capture and automatic IR night illumination." },
+        { t: "PIR motion detection", d: "Passive infrared sensing covers the field edge and keeps average power draw in the milliwatts between events." },
+        { t: "YOLOv8 edge vision", d: "Human-vs-animal and species-level classification with per-detection confidence, logged for review and retraining." },
+        { t: "180° servo movement", d: "A sweeping speaker head that tracks intruders and mimics a moving human presence across the field edge." },
+        { t: "Solar + 12V battery", d: "Roof-mounted solar panel keeps a 12V rechargeable battery topped up — multiple nights of autonomy without sun." },
+        { t: "LM2596 regulation", d: "Clean, stable 5V rail for the ESP32-CAM and sensors — the boring reliability that makes field electronics survive." },
+        { t: "Weatherproof enclosure", d: "Sealed, UV-stable housing rated for monsoon humidity, dust and 45°C summers on an open pole mount." },
+        { t: "IoT alerts & logging", d: "Wi-Fi with LTE fallback, event logging with capture frames, and SMS/push alerts for critical intrusions." },
+        { t: "Adaptive audio library", d: "Species-specific deterrent packs — boar distress, predator calls, herd tones, voice warnings — rotated to prevent habituation." },
+      ].map((f) => (
+        <div class="rounded-xl border border-border bg-card p-5 shadow-sm">
+          <h3 class="text-sm font-semibold">{f.t}</h3>
+          <p class="mt-1.5 text-xs leading-relaxed text-muted-foreground">{f.d}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section id="roadmap" class="border-y border-border bg-muted/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+      <div class="max-w-2xl">
+        <p class="text-sm font-semibold text-primary uppercase tracking-wide">Honest scope</p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-semibold">Demonstrated today — and what's next</h2>
+        <p class="mt-3 text-sm text-muted-foreground">
+          We are precise about what the system does today. The dashboard you can explore
+          runs on live-shaped demonstration data; the backend and live feeds connect as
+          each capability ships.
+        </p>
+      </div>
+      <div class="mt-10 grid gap-6 lg:grid-cols-2">
+        <div class="rounded-xl border border-primary/25 bg-card p-6 shadow-sm">
+          <div class="flex items-center gap-2">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-50"></span>
+              <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-primary"></span>
+            </span>
+            <h3 class="text-base font-semibold">Demonstrated now</h3>
+          </div>
+          <ul class="mt-4 space-y-2.5 text-sm text-muted-foreground">
+            {[
+              "PIR-triggered ESP32-CAM capture, day and IR night mode",
+              "YOLOv8 human-vs-animal and species classification with confidence",
+              "Animal-specific audio deterrence with adaptive intensity escalation",
+              "180° servo sweep and human-like scarecrow behaviour",
+              "Event logging: frame, class, zone, deterrent, outcome",
+              "Solar + 12V battery power with LM2596 5V regulation",
+              "Dashboard: status, live-shaped monitor, history, insights, fleet view",
+            ].map((x) => (
+              <li class="flex gap-2.5">
+                <svg class="mt-0.5 h-4 w-4 shrink-0 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                {x}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-xl border border-border bg-card p-6 shadow-sm">
+          <div class="flex items-center gap-2">
+            <span class="h-2.5 w-2.5 rounded-full bg-chart-2"></span>
+            <h3 class="text-base font-semibold">On the roadmap</h3>
+          </div>
+          <ul class="mt-4 space-y-2.5 text-sm text-muted-foreground">
+            {[
+              "Continuous live video streaming from the ESP32-CAM",
+              "Automatic model training from low-confidence field frames",
+              "Advanced predictive analytics (weather-correlated forecasting)",
+              "360° multi-camera monitoring per field",
+              "Mobile controls and remote commands to units",
+              "AI chatbot assistant for farmers (voice + regional languages)",
+              "Cloud accounts, OTA firmware and multi-farm fleet management",
+            ].map((x) => (
+              <li class="flex gap-2.5">
+                <svg class="mt-0.5 h-4 w-4 shrink-0 text-chart-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                {x}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="get-started" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
+    <div class="rounded-2xl bg-sidebar text-sidebar-foreground p-8 sm:p-12 text-center">
+      <h2 class="text-2xl sm:text-3xl font-semibold">See the Bijuka on duty</h2>
+      <p class="mx-auto mt-3 max-w-xl text-sm opacity-80 leading-relaxed">
+        Explore the full farmer platform — system status, near-real-time monitor,
+        event history, AI insights and fleet management — running on live-shaped
+        demonstration data.
+      </p>
+      <div class="mt-7 flex flex-wrap justify-center gap-3">
+        <a href="/index" class="inline-flex items-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">
+          Open the dashboard
+        </a>
+        <a href="/signin" class="inline-flex items-center rounded-md border border-sidebar-border bg-sidebar-accent/50 px-5 py-2.5 text-sm font-semibold hover:bg-sidebar-accent transition-colors">
+          Sign in
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
