@@ -1,0 +1,7 @@
+# Lightweight dependencies for headless policy and configuration tests.
+# Full AI inference dependencies are installed separately for local deployment.
+numpy>=1.24.0
+opencv-python-headless>=4.9.0
+pydantic>=2.6.0
+pydantic-settings>=2.2.0
+requests>=2.31.0

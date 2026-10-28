@@ -47,7 +47,7 @@ def test_case_1_animal_detection_simulation():
     assert decision.should_deter is True
     assert decision.trigger_animal == "cow"
     assert decision.trigger_confidence == 0.91
-    print("✓ Test Case 1 Passed: Animal detection produces authorized deterrence decision.")
+    print("PASS: Test Case 1 - animal detection authorizes deterrence.")
 
 
 def test_case_2_camera_mode_animal_deterrence():
@@ -67,7 +67,7 @@ def test_case_2_camera_mode_animal_deterrence():
     decision = decision_svc.evaluate([dog_detection], mode="camera")
     assert decision.status_code == "ANIMAL_DETERRENCE_ACTIVATED"
     assert decision.should_deter is True
-    print("✓ Test Case 2 Passed: Camera mode detects animal and authorizes deterrence.")
+    print("PASS: Test Case 2 - camera mode authorizes animal deterrence.")
 
 
 def test_case_3_human_safe_policy_no_deterrence():
@@ -88,7 +88,7 @@ def test_case_3_human_safe_policy_no_deterrence():
     assert decision.status_code == "HUMAN_NO_REACTION", f"Unexpected: {decision.status_code}"
     assert decision.should_deter is False
     assert decision.human_present is True
-    print("✓ Test Case 3 Passed: Human detected safely — zero deterrence, zero arm actuation.")
+    print("PASS: Test Case 3 - human-only detection does not trigger deterrence.")
 
 
 def test_case_4_human_presence_takes_priority_over_animal():
@@ -126,7 +126,7 @@ def test_case_4_human_presence_takes_priority_over_animal():
     )
     assert image_decision.status_code == "HUMAN_NO_REACTION"
     assert image_decision.should_deter is False
-    print("✓ Test Case 4 Passed: Human presence suppresses mixed-scene deterrence in every input order.")
+    print("PASS: Test Case 4 - human presence suppresses mixed-scene deterrence.")
 
 
 def test_case_4_unsupported_or_low_confidence():
@@ -161,7 +161,7 @@ def test_case_4_unsupported_or_low_confidence():
     decision2 = decision_svc.evaluate([chair_detection], mode="camera")
     assert decision2.status_code == "NO_SUPPORTED_ANIMAL"
     assert decision2.should_deter is False
-    print("✓ Test Case 5 Passed: Low confidence or non-target objects do not trigger deterrence.")
+    print("PASS: Test Case 5 - low-confidence and unsupported detections stay quiet.")
 
 
 def test_case_5_cooldown_prevents_repeated_triggers():
@@ -188,7 +188,7 @@ def test_case_5_cooldown_prevents_repeated_triggers():
     assert d2.status_code == "COOLDOWN_ACTIVE"
     assert d2.should_deter is False
     assert d2.cooldown_remaining > 0
-    print("✓ Test Case 6 Passed: Cooldown timer successfully suppresses spam triggers across frames.")
+    print("PASS: Test Case 6 - cooldown suppresses repeated triggers.")
 
 
 def test_case_6_hardware_separation_and_simulation():
@@ -205,7 +205,7 @@ def test_case_6_hardware_separation_and_simulation():
     # 2. Reset back to monitoring
     response_svc.reset_actuator_state()
     assert response_svc.actuator_status.ui_animation_state == "monitoring"
-    print("✓ Test Case 7 Passed: Physical actuator explicitly disabled by default; UI animation cleanly simulated.")
+    print("PASS: Test Case 7 - physical actuation is disabled by default.")
 
 
 def test_case_7_audio_playback_management():
@@ -218,7 +218,7 @@ def test_case_7_audio_playback_management():
     played = response_svc.play_audio("animal_alert.mp3")
     assert played is True
     response_svc.stop_audio()
-    print("✓ Test Case 8 Passed: Pre-recorded audio files loaded, played, and stopped safely.")
+    print("PASS: Test Case 8 - audio controls complete without hardware.")
 
 
 if __name__ == "__main__":
@@ -234,5 +234,5 @@ if __name__ == "__main__":
     test_case_6_hardware_separation_and_simulation()
     test_case_7_audio_playback_management()
     print("="*70)
-    print(" ALL 8 ACCEPTANCE TEST SUITES PASSED! ✓")
+    print(" ALL 8 ACCEPTANCE TEST SUITES PASSED.")
     print("="*70 + "\n")

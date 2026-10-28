@@ -121,7 +121,7 @@ The backend binds to localhost for local use. It does **not** implement authenti
 
 ## Run tests
 
-Install the backend dependencies above, then run these from the repository root:
+Install the backend dependencies above, then run these from the repository root. CI uses the smaller [`requirements-ci.txt`](requirements-ci.txt) set so policy tests do not download AI model weights or GPU packages:
 
 ```powershell
 python tests\test_detection.py
