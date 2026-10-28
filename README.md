@@ -2,7 +2,9 @@
 
 **Track:** Green Energy & Sustainability
 
-**Team:** Pravash Singh (individual participant)
+**Team:** Smart Scarecrow Innovators
+
+**Team Leader:** Pravash Singh
 
 **Status:** Working software baseline and physical prototype; full field integration and validation are still in progress.
 
