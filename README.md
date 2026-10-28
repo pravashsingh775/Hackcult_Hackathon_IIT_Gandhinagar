@@ -17,7 +17,9 @@
 
 **HackCult '26 · Green Energy & Sustainability**
 
-**Team:** Pravash Singh · Individual participant
+**Team:** Smart Scarecrow Innovators
+
+**Team leader:** Pravash Singh
 
 **Project stage:** Working software baseline and physical prototype; full integration and field validation are in progress.
 
