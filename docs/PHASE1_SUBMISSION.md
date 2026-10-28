@@ -6,9 +6,10 @@
 - [x] Project-specific README with run and setup instructions.
 - [x] Architecture diagram, current event data model, and clearly labeled proposed database design in [ARCHITECTURE.md](ARCHITECTURE.md).
 - [x] Pitch deck included at [HackCult26-Smart-Bijuka-Pitch-Deck.pptx](HackCult26-Smart-Bijuka-Pitch-Deck.pptx).
-- [ ] Create and publish the repository as a public GitHub repository.
+- [x] Create and publish the repository as a public GitHub repository: [Hackcult_Hackathon_IIT_Gandhinagar](https://github.com/pravashsingh775/Hackcult_Hackathon_IIT_Gandhinagar).
 - [ ] Record and upload an unlisted YouTube walkthrough.
-- [ ] Add the final repository and video URLs to the pitch deck's last slide and the submission form.
+- [x] Add the public repository URL to the pitch deck's last slide.
+- [ ] Add the unlisted video URL to the pitch deck's last slide and the submission form.
 - [ ] Re-check the official submission portal for the closing time; the supplied event description conflicts between 6:30 PM and 11:59 PM IST on 4 November 2026.
 
 ## Walkthrough outline

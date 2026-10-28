@@ -106,12 +106,12 @@ The event information supplied for this project asks for a public GitHub reposit
 
 | Deliverable | Included/status |
 |---|---|
-| Public source repository | This local repository is prepared for publication. It has not yet been published to GitHub. |
+| Public source repository | [Hackcult_Hackathon_IIT_Gandhinagar](https://github.com/pravashsingh775/Hackcult_Hackathon_IIT_Gandhinagar) |
 | Comprehensive README and setup steps | Included here |
 | Architecture diagram and data model | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
 | Pitch deck | [docs/HackCult26-Smart-Bijuka-Pitch-Deck.pptx](docs/HackCult26-Smart-Bijuka-Pitch-Deck.pptx) |
 | Unlisted YouTube walkthrough | **Still required.** Record the running build with dynamic inputs, upload as unlisted, then add its URL to the deck and submission form. |
-| Final deck links | **Still required.** The current deck's final slide has blank GitHub and demo links; replace these after the public repository and video are ready. |
+| Final deck links | The GitHub link is included. Add the unlisted video URL to the final slide after recording. |
 
 The supplied event listing gives **4 November 2026, 6:30 PM IST** as the Phase 1 deadline in its dates panel, but another section says 11:59 PM. Verify the deadline and current submission instructions on the official event portal. The registration deadline shown, 26 October 2026, has passed.
 
