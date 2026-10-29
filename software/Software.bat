@@ -31,7 +31,7 @@ if "%choice%"=="5" goto verify
 if "%choice%"=="6" goto detections
 if "%choice%"=="7" goto vscode
 if "%choice%"=="8" goto model
-if "%choice%"=="0" exit /b
+if "%choice%"=="0" exit /b 0
 goto menu
 
 :run_app
@@ -53,13 +53,25 @@ echo.
 echo [*] Starting Smart Bijuka Web Portal...
 cd /d "%~dp0Smart_Bijuka_Website"
 where npm >nul 2>nul || (echo [!] Node.js / npm not found in PATH. & pause & cd /d "%~dp0" & goto menu)
-if not exist "node_modules" (
-    echo [*] Installing web dependencies first...
-    call npm install
+node -e "const [major,minor,patch]=process.versions.node.split('.').map(Number); process.exit(major > 22 || (major === 22 && (minor > 23 || (minor === 23 && patch >= 4))) ? 0 : 1)"
+if errorlevel 1 (
+    echo [!] Node.js 22.23.4 or later is required by the web portal.
+    pause
+    cd /d "%~dp0"
+    goto menu
 )
-echo [*] Opening browser at http://localhost:4321
-start "" "http://localhost:4321"
-call npm run dev
+if not exist "node_modules\astro\package.json" (
+    echo [*] Installing locked web dependencies...
+    call npm ci
+    if errorlevel 1 (
+        echo [!] Web dependency installation failed.
+        pause
+        cd /d "%~dp0"
+        goto menu
+    )
+)
+echo [*] Starting the web portal and opening it when ready...
+call npm run dev -- --open
 cd /d "%~dp0"
 goto menu
 
@@ -76,12 +88,18 @@ goto menu
 
 :install_web
 echo.
-echo [*] Installing Web dependencies...
+echo [*] Installing locked Web dependencies...
 cd /d "%~dp0Smart_Bijuka_Website"
-call npm install
+where npm >nul 2>nul || (echo [!] Node.js / npm not found in PATH. & pause & cd /d "%~dp0" & goto menu)
+call npm ci
+if errorlevel 1 (
+    echo [!] Web dependency installation failed.
+    pause
+    cd /d "%~dp0"
+    goto menu
+)
 cd /d "%~dp0"
-echo.
-echo [OK] All Web dependencies installed.
+echo [OK] Locked Web dependencies installed.
 pause
 goto menu
 

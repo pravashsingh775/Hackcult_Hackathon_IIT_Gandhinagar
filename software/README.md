@@ -6,6 +6,10 @@ This repository contains three software surfaces:
 - **Python desktop application** (`src/`): a separate webcam/image detector with a Tkinter interface.
 - **Astro/React web UI** (`Smart_Bijuka_Website/`): an interactive visual prototype populated by local mock fixtures. It is not currently connected to the FastAPI API or a configured Supabase database.
 
+## Start from Windows
+
+Double-click `START_SOFTWARE.bat` in the repository root to open the software menu. Select the desktop app or web portal; the web option installs the locked npm dependencies when needed and opens the browser after the development server starts. The web portal requires Node.js 22.23.4 or later.
+
 ## Start the FastAPI backend
 
 From the repository root in PowerShell:
