@@ -11,7 +11,6 @@ import {
   ShieldCheck,
   Zap,
   Info,
-  Clock,
   Radio,
   FileCheck2,
   Layers,
@@ -20,7 +19,6 @@ import {
   History,
   AlertCircle,
   HelpCircle,
-  ExternalLink,
 } from "lucide-react";
 import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -1022,4 +1020,3 @@ export default function SmartBijukaDashboard() {
     </AppShell>
   );
 }
-
